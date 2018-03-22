@@ -2,6 +2,7 @@ const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 
+const port = process.env.PORT || 8000;
 
 let app = express();
 
@@ -53,4 +54,6 @@ app.get('/nosql',(req,res) =>{
    res.send('hey done');
 });
 
-app.listen(8000);
+app.listen(port, () => {
+  console.log(`server is up on port ${port}`);
+});
