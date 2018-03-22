@@ -26,17 +26,12 @@ fs.appendFile('server.log', log + '\n', (err) => {
  next();
 })
 
-// app.use((req, res, next) => {
-// res.render('maintainance.hbs');
-// });
-
 app.use(express.static(__dirname + '/public'));
 
 hbs.registerHelper('getCurrentYear', () => {
    return new Date().getFullYear();
 });
 app.get('/',(req, res) => {
-    //res.send('<h1>Hello Ankit!</h1>');
     res.render('home.hbs',{
     	headerMessage: 'sampleing and testing is a way to look ',
     	pageTitle: 'Home Page',
@@ -50,10 +45,13 @@ app.get('/about', (req,res) => {
    	pageTitle: 'About Page',
    });
 });
-app.get('/nosql',(req,res) =>{
-   res.send('hey done');
-});
 
+app.get('/projects', (req,res) => {
+  res.render('portfolio.hbs',{
+    topic: 'here is my portfolio Page',
+  });
+
+});
 app.listen(port, () => {
   console.log(`server is up on port ${port}`);
 });
